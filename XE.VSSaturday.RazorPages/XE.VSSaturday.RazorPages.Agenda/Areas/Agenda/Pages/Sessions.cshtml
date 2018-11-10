@@ -1,0 +1,34 @@
+﻿@page
+@model XE.VSSaturday.RazorPages.Agenda.Areas.Agenda.Pages.SessionsModel
+@{
+    ViewData["Title"] = "Sessioni";
+}
+
+<h1>Elenco sessioni</h1>
+
+<ul id="pnlList"></ul>
+
+@section Scripts{
+
+    <script>
+        $(function () {
+
+            $.ajax({
+                url: '@Url.RouteUrl("AgendaSessions", new {controller = "SessionApi"})',
+                type: "GET",
+                dataType: "json"
+            }).done(function (data) {
+                var ul = $('#pnlList');
+                ul.empty();
+
+                data.forEach(function (item) {
+                    ul.append(`<li><h3>${item.title}</h3><p>${item.speaker}</p></li>`)
+                });
+            })
+            .fail(function () {
+                alert("error");
+            })
+
+        });
+    </script>
+}

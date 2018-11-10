@@ -1,0 +1,36 @@
+﻿@page
+@model ContactModel
+@{
+    ViewData["Title"] = "Contatti";
+}
+
+<section>
+    <form method="post">
+        <h2>@ViewData["Title"]</h2>
+        <h4>Compila la form e verrai contattato (forse) al più presto</h4>
+        <hr />
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Input.Email"></label>
+            <input asp-for="Input.Email" class="form-control" />
+            <span asp-validation-for="Input.Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Input.Text"></label>
+            <textarea asp-for="Input.Text" class="form-control" rows="10"></textarea>
+            <span asp-validation-for="Input.Text" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-default">Invia</button>
+        </div>
+    </form>
+</section>
+<br>
+
+
+
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

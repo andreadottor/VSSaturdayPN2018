@@ -1,0 +1,14 @@
+﻿@page
+@model XE.VSSaturday.RazorPages.Web.Pages.Newsletter.OkModel
+@{
+    ViewData["Title"] = "Iscrizione newsletter";
+}
+
+<h2>Iscrizione newsletter</h2>
+
+@if (!string.IsNullOrWhiteSpace(Model.NewsletterJoinMessage))
+{
+    <div class="alert alert-success" role="alert">
+        @Model.NewsletterJoinMessage
+    </div>
+}

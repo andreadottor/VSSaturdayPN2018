@@ -1,0 +1,36 @@
+﻿@page
+@model XE.VSSaturday.RazorPages.Agenda.Areas.Agenda.Pages.SpeakersModel
+@{
+    ViewData["Title"] = "Speaker";
+}
+
+
+<h1>Speaker</h1>
+
+<ul id="pnlList"></ul>
+
+@section Scripts{
+
+    <script>
+        $(function () {
+
+            $.ajax({
+                url: '@Url.RouteUrl("AgendaSpeakers", new {controller = "SpeakersApi"})',
+                type: "GET",
+                dataType: "json"
+            }).done(function (data) {
+                var ul = $('#pnlList');
+                ul.empty();
+
+                data.forEach(function (item) {
+                    ul.append(`<li><h3>${item.name}</h3><p>${item.description}</p></li>`)
+                });
+            })
+            .fail(function () {
+                alert("error");
+            })
+
+        });
+    </script>
+}
+

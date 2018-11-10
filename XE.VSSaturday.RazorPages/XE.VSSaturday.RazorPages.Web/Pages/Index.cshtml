@@ -1,0 +1,30 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<h1>Visual Studio Saturday</h1>
+<p>Demo Razor Pages</p>
+<p>2018.11.10</p>
+<hr />
+<section>
+    <form method="POST">
+        <h2>Newsletter</h2>
+        <h4>Iscriviti alla newsletter per rimanere informato sui prossimi eventi</h4>
+        <div class="form-group">
+            <label asp-for="Input.Email"></label>
+            <input asp-for="Input.Email" class="form-control" />
+            <span asp-validation-for="Input.Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" asp-page-handler="JoinListXE" value="Join XE newsletter" />
+            <input type="submit" asp-page-handler="JoinList1nn0va" value="Join 1nn0va newsletter" />
+        </div>
+    </form>
+</section>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
